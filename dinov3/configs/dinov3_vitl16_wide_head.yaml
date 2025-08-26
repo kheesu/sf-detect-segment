@@ -1,0 +1,32 @@
+
+# DINOv3 ViT-L with a wide head configuration
+
+seed: 42
+
+model:
+  name: 'dinov3_vitl16'
+  weights: 'model/dinov3_vitl16.pth'
+  num_classes: 1
+  head_channels: [1024, 512, 256] # Wide head
+
+training:
+  epochs: 25
+  batch_size: 4 # Smaller batch size for larger model
+  optimizer:
+    lr0: 0.0001
+
+dataset:
+  train_images: '../data/images/train'
+  train_masks: '../data/gt/train'
+  val_images: '../data/images/val'
+  val_masks: '../data/gt/val'
+  test_images: '../data/images/test'
+  test_masks: '../data/gt/test'
+  reject_images: '../data/reject'
+
+output:
+  save_dir: 'output'
+  run_name: 'dinov3_vitl16_wide_head_e25'
+
+benchmarking:
+  threshold: 0.5

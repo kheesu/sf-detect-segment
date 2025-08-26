@@ -1,0 +1,8 @@
+model: yolo11l.pt
+data: data/flap.yaml
+epochs: 50
+batch: 16
+lr0: 0.001
+freeze: 23
+project: output
+name: yolo11l_f23_no_augment

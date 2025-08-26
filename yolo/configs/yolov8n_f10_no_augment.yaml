@@ -1,0 +1,8 @@
+model: yolov8n.pt
+data: data/flap.yaml
+epochs: 50
+batch: 16
+lr0: 0.001
+freeze: 10
+project: output
+name: yolov8n_f10_no_augment

@@ -1,0 +1,24 @@
+# Training configuration for RF-DETR Small for 50 epochs.
+
+model:
+  size: 'small'
+  num_classes: 1 # Number of object classes to detect
+
+training:
+  epochs: 50
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  optimizer:
+    name: 'AdamW'
+    lr0: 0.0001 # 1e-4
+    weight_decay: 0.0001
+  scheduler:
+    name: 'CosineAnnealingLR'
+
+dataset:
+  train_path: '../data/coco_dataset_bbox/train'
+  valid_path: '../data/coco_dataset_bbox/valid'
+  num_workers: 4
+
+output:
+  save_dir: './output'

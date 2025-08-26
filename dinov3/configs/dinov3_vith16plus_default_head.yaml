@@ -1,0 +1,32 @@
+
+# DINOv3 ViT-H+ with default head configuration
+
+seed: 42
+
+model:
+  name: 'dinov3_vith16plus'
+  weights: 'model/dinov3_vith16plus.pth'
+  num_classes: 1
+  # Using default head: [256, 128, 64, 32]
+
+training:
+  epochs: 25
+  batch_size: 2 # Very small batch size for huge model
+  optimizer:
+    lr0: 0.0001
+
+dataset:
+  train_images: '../data/images/train'
+  train_masks: '../data/gt/train'
+  val_images: '../data/images/val'
+  val_masks: '../data/gt/val'
+  test_images: '../data/images/test'
+  test_masks: '../data/gt/test'
+  reject_images: '../data/reject'
+
+output:
+  save_dir: 'output'
+  run_name: 'dinov3_vith16plus_default_head_e25'
+
+benchmarking:
+  threshold: 0.5

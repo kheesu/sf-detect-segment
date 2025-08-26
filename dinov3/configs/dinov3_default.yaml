@@ -1,0 +1,44 @@
+
+# DINOv3 Default Configuration
+
+# Seed for reproducibility
+seed: 42
+
+# Model Configuration
+model:
+  # Currently, only one model type is supported, but this allows for future expansion
+  name: 'dinov3_vitb16'
+  # Path to the pretrained DINOv3 weights.
+  # This path is relative to the 'dinov3' directory.
+  weights: 'model/dinov3_vitb16.pth'
+  num_classes: 1
+
+# Training Hyperparameters
+training:
+  epochs: 25
+  batch_size: 8
+  optimizer:
+    lr0: 0.0001
+
+# Dataset Configuration
+dataset:
+  # Paths are relative to the 'dinov3' directory
+  train_images: '../data/images/train'
+  train_masks: '../data/gt/train'
+  val_images: '../data/images/val'
+  val_masks: '../data/gt/val'
+  test_images: '../data/images/test'
+  test_masks: '../data/gt/test'
+  reject_images: '../data/reject' # For false positive calculation
+
+# Output Configuration
+output:
+  # Directory to save trained models and logs, relative to 'dinov3'
+  save_dir: 'output'
+  # Name of the specific run/experiment
+  run_name: 'dinov3_vitb16_e25'
+
+# Benchmarking Configuration
+benchmarking:
+  # Confidence thresholds to evaluate the model at
+  threshold: 0.5 # DINOv3 is a segmenter, so we use a single threshold for the mask

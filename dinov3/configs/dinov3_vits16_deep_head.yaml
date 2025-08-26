@@ -1,0 +1,32 @@
+
+# DINOv3 ViT-S with a deep head configuration
+
+seed: 42
+
+model:
+  name: 'dinov3_vits16'
+  weights: 'model/dinov3_vits16.pth'
+  num_classes: 1
+  head_channels: [512, 256, 128, 64, 32] # Deep head
+
+training:
+  epochs: 50 # More epochs for a deeper head
+  batch_size: 8
+  optimizer:
+    lr0: 0.0001
+
+dataset:
+  train_images: '../data/images/train'
+  train_masks: '../data/gt/train'
+  val_images: '../data/images/val'
+  val_masks: '../data/gt/val'
+  test_images: '../data/images/test'
+  test_masks: '../data/gt/test'
+  reject_images: '../data/reject'
+
+output:
+  save_dir: 'output'
+  run_name: 'dinov3_vits16_deep_head_e50'
+
+benchmarking:
+  threshold: 0.5

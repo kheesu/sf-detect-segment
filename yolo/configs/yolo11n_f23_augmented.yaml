@@ -1,0 +1,14 @@
+model: yolo11n.pt
+data: data/flap.yaml
+epochs: 50
+batch: 16
+lr0: 0.001
+freeze: 23
+augment: true
+degrees: 90
+translate: 0.1
+scale: 0.5
+shear: 10
+perspective: 0.0001
+project: output
+name: yolo11n_f23_augmented
